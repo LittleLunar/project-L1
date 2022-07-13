@@ -1,0 +1,1 @@
+docker run --name pg -e POSTGRES_USER=root -e POSTGRES_PASSWORD=root -p 5433:5432 -d postgres:alpine
