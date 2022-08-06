@@ -12,47 +12,53 @@ interface IUser
 	id: CreationOptional<number>;
 	email: string;
 	password: string;
-	createdAt: CreationOptional<Date>;
-	updatedAt: CreationOptional<Date>;
-	isActive: boolean;
+	// created_at: CreationOptional<Date>;
+	// updated_at: CreationOptional<Date>;
+	is_active: boolean;
+	role: "user" | "admin";
 }
 
-const UserModel = sequelize.define<IUser>("User", {
-	id: {
-		primaryKey: true,
-		autoIncrement: true,
-		allowNull: false,
-		type: DataTypes.BIGINT.UNSIGNED,
+const UserModel = sequelize.define<IUser>(
+	"User",
+	{
+		id: {
+			primaryKey: true,
+			autoIncrement: true,
+			allowNull: false,
+			type: DataTypes.BIGINT.UNSIGNED,
+		},
+		email: {
+			type: DataTypes.STRING,
+			allowNull: false,
+			unique: true,
+			validate: {
+				isEmail: true,
+				is: /^.+@.+\..+/,
+			},
+		},
+		password: {
+			type: DataTypes.STRING,
+			allowNull: false,
+			validate: {
+				is: /^.{4,64}$/,
+			},
+		},
+		is_active: {
+			type: DataTypes.BOOLEAN,
+			defaultValue: true,
+			allowNull: false,
+		},
+		role: {
+			type: DataTypes.ENUM("user", "admin"),
+			defaultValue: "user",
+			allowNull: false,
+		},
 	},
-	email: {
-		type: DataTypes.STRING,
-		allowNull: false,
-		unique: true,
-    validate: {
-      isEmail: true,
-      is: /^.+@.+\..+/
-    }
-	},
-	password: {
-		type: DataTypes.STRING,
-		allowNull: false,
-    validate: {
-      is: /^.{4,64}$/
-    }
-	},
-	createdAt: {
-		type: DataTypes.DATE,
-		allowNull: false,
-	},
-	updatedAt: {
-		type: DataTypes.DATE,
-		allowNull: false,
-	},
-	isActive: {
-		type: DataTypes.BOOLEAN,
-		defaultValue: true,
-		allowNull: false,
-	},
-});
+	{
+		timestamps: true,
+		createdAt: "created_at",
+		updatedAt: "updated_at",
+	}
+);
 
 export default UserModel;

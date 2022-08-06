@@ -1,11 +1,11 @@
-import { Application } from "express";
 import { getBlogs, createBlog } from "../controllers/blog.controller";
 import routes from "../configs/routes";
+import { Router } from "express";
 
-const BlogRoute = (app: Application): void => {
-	app.get(routes.getBlogs, getBlogs);
+const router = Router();
 
-	app.post(routes.createBlog, createBlog);
-};
+router.get(routes.getBlogs, getBlogs);
 
-export default BlogRoute;
+router.post(routes.createBlog, createBlog);
+
+export default router;
