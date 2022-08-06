@@ -1,13 +1,13 @@
 const routes = {
   // Blog routes
-  getBlogs: "fjeklajfeoiwjfaweklj;jfeowa",
-  getBlogById: "feafwejkleafljfwelka/:id",
-  createBlog:"fjeakjfewo;fajwekwno;a",
+  getBlogs: "/fjeklajfeoiwjfaweklj;jfeowa",
+  getBlogById: "/feafwejkleafljfwelka/:id",
+  createBlog:"/fjeakjfewo;fajwekwno;a",
 
   // User routes,
-  getUsers:"users",
-  getUserById: "fewafnewafnwoffea/:id",
-  createUser: "feakfjew;kafjwke;fjwkfa;"
+  getUsers:"/users",
+  getUserById: "/user/:id",
+  createUser: "/createUser"
 }
 
 export default routes

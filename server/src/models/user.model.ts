@@ -14,11 +14,11 @@ interface IUser
 	password: string;
 	// created_at: CreationOptional<Date>;
 	// updated_at: CreationOptional<Date>;
-	is_active: boolean;
+	is_active: CreationOptional<boolean>;
 	role: "user" | "admin";
 }
 
-const UserModel = sequelize.define<IUser>(
+const User = sequelize.define<IUser>(
 	"User",
 	{
 		id: {
@@ -61,4 +61,4 @@ const UserModel = sequelize.define<IUser>(
 	}
 );
 
-export default UserModel;
+export default User;
