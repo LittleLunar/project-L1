@@ -1,4 +1,4 @@
-import { Sequelize } from "sequelize/types";
+import { Sequelize } from "sequelize";
 import configs from "../configs";
 
 const sequelize = new Sequelize(

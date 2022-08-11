@@ -25,7 +25,7 @@ const User = sequelize.define<IUser>(
 			primaryKey: true,
 			autoIncrement: true,
 			allowNull: false,
-			type: DataTypes.BIGINT.UNSIGNED,
+			type: DataTypes.BIGINT,
 		},
 		email: {
 			type: DataTypes.STRING,
@@ -58,6 +58,7 @@ const User = sequelize.define<IUser>(
 		timestamps: true,
 		createdAt: "created_at",
 		updatedAt: "updated_at",
+		freezeTableName: true,
 	}
 );
 

@@ -4,7 +4,7 @@ import cors from "cors";
 
 import serverConfig from "./configs";
 import BlogRoute from "./routes/blog.route";
-import UserRoute from "./routes/user.route"
+import UserRoute from "./routes/user.route";
 import routes from "./configs/routes";
 
 const app: Application = express();
@@ -27,8 +27,8 @@ app.use(express.urlencoded({ extended: false }));
 // Authorization
 // Custom Middleware
 // Endpoint
-app.use(UserRoute)
-app.use(BlogRoute)
+app.use("/api", UserRoute);
+app.use("/api", BlogRoute);
 
 app.listen(serverConfig.PORT, () => {
 	console.log(`Server is listening to port:${serverConfig.PORT}`);
